@@ -1,4 +1,3 @@
-/******* Bootstrap Theming ********/
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -9452,6 +9451,10 @@ a.text-dark:hover, a.text-dark:focus {
   font-family: 'Great Vibes', cursive;
 }
 
+.gift-font{
+  font-family:Edu Australia VIC WA NT Hand Precursive;
+}
+
 .btn-square {
   width: 40px;
   height: 40px;
@@ -9775,28 +9778,55 @@ a.text-dark:hover, a.text-dark:focus {
   cursor: pointer;
 }
 
-/* Style the popup container */
-.popup-container {
+/* Popup container styling */
+#popup-container {
+  display: none; 
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); 
   align-items: center;
-  z-index: 1;
+  justify-content: center;
+  opacity: 0; 
+  transition: opacity 12s ease-in-out; 
+  z-index: 1000; 
 }
 
-/* Style the popup content */
+#popup-container.active {
+  display: flex; 
+  opacity: 1; 
+}
+
+/* Popup content styling */
 .popup-content {
-  background-color: #fff;
+  background: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 300px;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+
+.popup-content img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+#close-popup {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+#close-popup:hover {
+  background-color: #d32f2f; 
 }
 
 /* Style the icons */

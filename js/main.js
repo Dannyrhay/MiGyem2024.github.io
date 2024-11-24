@@ -4,6 +4,10 @@
     // Navbar on scrolling
     $(window).scroll(function () {
         if ($(this).scrollTop() > 200) {
+            if (!$('.navbar-toggler').hasClass('collapsed')) {
+                // Close the navbar collapse on scroll
+                $('.navbar-toggler').click();
+            }
             $('.navbar').fadeIn('slow').css('display', 'flex');
         } else {
             $('.navbar').fadeOut('slow').css('display', 'none');
@@ -25,25 +29,6 @@
                 $(this).closest('a').addClass('active');
             }
         }
-    });
-
-
-    // Modal Video
-    $(document).ready(function () {
-        var $videoSrc;
-        $('.btn-play').click(function () {
-            $videoSrc = $(this).data("src");
-        });
-    
-        $('#videoModal').on('shown.bs.modal', function (e) {
-            $("#video source").attr('src', $videoSrc);
-            $("#video")[0].load();
-        })
-    
-        $('#videoModal').on('hide.bs.modal', function (e) {
-            $("#video").get(0).pause();
-            $("#video").get(0).currentTime = 0;
-        })
     });
 
 
@@ -119,17 +104,22 @@
 // Get the action button and popup container elements
 const actionBtn = document.querySelector('.action-btn');
 const popupContainer = document.getElementById('popup-container');
+const closePopup = document.getElementById('close-popup');
 
 // Add an event listener to the action button
 actionBtn.addEventListener('click', () => {
-    // Show the popup container
-    popupContainer.style.display = 'flex';
+    // Show the popup container by adding the active class
+    popupContainer.classList.add('active');
 });
 
-// Add an event listener to the popup container
+// Add an event listener to the popup container for clicking outside the popup
 popupContainer.addEventListener('click', (e) => {
-    // If the clicked element is not the popup content, hide the popup container
     if (e.target === popupContainer) {
-        popupContainer.style.display = 'none';
+        popupContainer.classList.remove('active');
     }
+});
+
+// Add an event listener to the close button to hide the popup
+closePopup.addEventListener('click', () => {
+    popupContainer.classList.remove('active');
 });
